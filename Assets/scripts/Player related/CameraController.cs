@@ -29,16 +29,16 @@ public class CameraController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(target_rotation_x, target_rotation_y, 0f);
         player.Rotate(Vector3.up * mouse_x);
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        /*if (Input.GetKey(KeyCode.Mouse0))
         {
             PewPew();
-        }
+        }*/
     }
 
-    private void PewPew()
+    /*private void PewPew()
     {
         GameObject projectile = (GameObject)Instantiate(pewpew, transform.position, this.transform.rotation);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.AddForce(throwForce * Vector3.forward, ForceMode.Impulse);
-    }
+    }*/
 }
