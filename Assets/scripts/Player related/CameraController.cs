@@ -12,10 +12,15 @@ public class CameraController : MonoBehaviour
     public float throwForce = 5;
     public GameObject pewpew;
 
-    void Start()
+    public GameObject impactEffect;
+
+    private void OnLevelWasLoaded(int level)
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (level == 1)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     void Update()
@@ -33,6 +38,22 @@ public class CameraController : MonoBehaviour
         {
             PewPew();
         }*/
+        if (Input.GetKey(KeyCode.E))
+        {
+            shoot();
+        }
+    }
+
+    private void shoot()
+    {
+        RaycastHit pow;
+        Physics.Raycast(this.transform.position, this.transform.forward, out pow);
+        //cam.Recoil();
+        //enemyGUN en = pow.transform.GetComponent<enemyGUN>();
+        //if (en != null) en.GetHit();
+        //boom.Play();
+        GameObject obj = Instantiate(impactEffect, pow.point, Quaternion.LookRotation(pow.normal));
+        Destroy(obj, 1f);
     }
 
     /*private void PewPew()
